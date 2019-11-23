@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,25 @@ public class GameManager : MonoBehaviour
     // GameObject 可以存放場景上的遊戲物件與專案內的預製物
     public GameObject pipe;
 
+    public GameObject goFinal;
+
+    public static bool gameover;
+
+    public Text textScore;
+
+   
+
+    public void AddScore()
+    {
+        print("加分");
+        score++;
+        //分數介面文字更新成分數轉字串
+        textScore.text = score.ToString();
+        
+    }
+
+    
+
     // 修飾詞權限：
     // private 其他類別無法使用
     // public 其他類別可以使用
@@ -17,10 +37,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// 加分。
     /// </summary>
-    public void AddScore()
-    {
-
-    }
+    
     
     /// <summary>
     /// 最高分數判定。
@@ -53,7 +70,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GameOver()
     {
-
+        goFinal.SetActive(true);//顯示結算畫面
+        gameover = true; //遊戲結束 = 是
+        CancelInvoke("SpawnPipe"); //停止InvokeRepeating的方法
     }
 
     private void Start()

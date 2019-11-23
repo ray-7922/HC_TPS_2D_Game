@@ -24,6 +24,7 @@ public class Ground : MonoBehaviour
     {
         // 地板.位移(x, y, z);
         // Time.deltaTime 每幀的時間
+        if (GameManager.gameover) return;
         ground.Translate(-speed * Time.deltaTime, 0, 0);
     }
 }

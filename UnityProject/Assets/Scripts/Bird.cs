@@ -13,6 +13,12 @@ public class Bird : MonoBehaviour
 
     public GameObject GM, NUM;
 
+    public GameManager Gm_Script;
+
+    public AudioSource aud;
+
+    public AudioClip Die, SE_Jump, Bouns;
+
     void Start()
     {
         r2d = GetComponent<Rigidbody2D>();
@@ -40,6 +46,7 @@ public class Bird : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             //print("0000");
+            aud.PlayOneShot(SE_Jump, 1.5f);
             r2d.Sleep();                       //小雞剛體重新設定
             r2d.gravityScale = 1;              //小雞剛體,重力 = 1;
             r2d.AddForce(new Vector2(0, jump));//小雞剛體.增加推力(二維向量(左右，上下));
@@ -62,6 +69,9 @@ public class Bird : MonoBehaviour
     private void Dead()
     {
         dead = true;
+        //Time.timeScale = 0;
+        Gm_Script.GameOver(); //static用 如果遊戲結束就跳出地板移動Funtion
+        aud.PlayOneShot(Die, 1.5f);
     }
 
     private void FixedUpdate()
@@ -78,10 +88,28 @@ public class Bird : MonoBehaviour
             Dead();
         }
     }
+    private void OnTriggerEnter2D(Collider2D hit)
+    {
+        if (hit.gameObject.tag == "die")
+        {
+            Dead();
+        }
+    }     //如果碰到.物件名稱為上或下則死亡 TriggerEnter可省略GameObject
+
+    private void OnTriggerExit2D(Collider2D hit) //物件離開觸發區時會執行一次
+    {
+        if (hit.gameObject.tag == "Add") 
+        {
+            Gm_Script.AddScore();
+            aud.PlayOneShot(Bouns, 1.5f);
+        }
+    }
+
 
     private void Update()
     {
         gameObject.transform.position = new Vector2(0, Mathf.Clamp(gameObject.transform.position.y, -3.53f, 4.62f));
         Jump();
     }
+    
 }
