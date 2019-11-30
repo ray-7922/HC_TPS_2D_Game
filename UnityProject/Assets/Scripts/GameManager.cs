@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //PlayerPrefs.DeleteKey(best);
-        Screen.SetResolution(720, 1280, false);
+        Screen.SetResolution(450, 800, false);
         //因靜態成員載入場景不會還原,在Start作開關
         gameover = false;
         // 重複調用("方法名稱"，開始時間，間隔時間)
