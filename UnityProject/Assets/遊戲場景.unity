@@ -250,6 +250,7 @@ GameObject:
   - component: {fileID: 83827873}
   - component: {fileID: 83827872}
   - component: {fileID: 83827871}
+  - component: {fileID: 83827874}
   m_Layer: 5
   m_Name: "\u96E2\u958B\u904A\u6232"
   m_TagString: Untagged
@@ -356,6 +357,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 83827869}
   m_CullTransparentMesh: 0
+--- !u!114 &83827874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83827869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &135505744
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,6 +850,7 @@ GameObject:
   - component: {fileID: 576267414}
   - component: {fileID: 576267413}
   - component: {fileID: 576267412}
+  - component: {fileID: 576267415}
   m_Layer: 5
   m_Name: "\u91CD\u65B0\u904A\u6232"
   m_TagString: Untagged
@@ -942,6 +957,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576267410}
   m_CullTransparentMesh: 0
+--- !u!114 &576267415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576267410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1498019171}
+          m_MethodName: Replay
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &698940761
 GameObject:
   m_ObjectHideFlags: 0
@@ -1321,6 +1364,7 @@ MonoBehaviour:
   pipe: {fileID: 3379918633709527166, guid: 932201f90fa98864ea68927e72f30066, type: 3}
   goFinal: {fileID: 466136645}
   textScore: {fileID: 1296395352}
+  basetext: {fileID: 2059024806}
 --- !u!4 &1498019172
 Transform:
   m_ObjectHideFlags: 0

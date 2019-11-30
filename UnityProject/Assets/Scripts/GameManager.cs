@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,14 +18,33 @@ public class GameManager : MonoBehaviour
 
     public Text textScore;
 
+    public Text basetext;
+  string best = "best"; 
+
+    
+  
+
+    
+
+
+
    
 
     public void AddScore()
     {
+        
+        
         print("加分");
         score++;
+
+        int i = PlayerPrefs.GetInt("best");
+        Debug.Log(i);
         //分數介面文字更新成分數轉字串
         textScore.text = score.ToString();
+        if (score>=i)
+        {
+            PlayerPrefs.SetInt("best", score);
+        }
         
     }
 
@@ -44,7 +64,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void HeightScore()
     {
-
+        basetext.text= PlayerPrefs.GetInt("best").ToString();
     }
 
     /// <summary>
@@ -70,14 +90,30 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GameOver()
     {
+        HeightScore();
         goFinal.SetActive(true);//顯示結算畫面
         gameover = true; //遊戲結束 = 是
         CancelInvoke("SpawnPipe"); //停止InvokeRepeating的方法
     }
 
+    public void GameOverEXIT() { }
+
+    public void Replay() 
+    {
+        SceneManager.LoadScene("遊戲場景"); //場景管理器.載入場景("場景名稱"); 舊版API
+        //Application.LoadLevel("遊戲場景");//應用程式.載入場景("場景名稱"); 新版API
+    }
+
+
+
     private void Start()
     {
+        //PlayerPrefs.DeleteKey(best);
+        Screen.SetResolution(720, 1280, false);
+        //因靜態成員載入場景不會還原,在Start作開關
+        gameover = false;
         // 重複調用("方法名稱"，開始時間，間隔時間)
         InvokeRepeating("SpawnPipe", 0, 1.5f);
+        PlayerPrefs.GetInt("best").ToString();
     }
 }

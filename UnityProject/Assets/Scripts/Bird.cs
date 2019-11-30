@@ -98,7 +98,7 @@ public class Bird : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D hit) //物件離開觸發區時會執行一次
     {
-        if (hit.gameObject.tag == "Add") 
+        if (hit.gameObject.tag == "Add"&&!dead) 
         {
             Gm_Script.AddScore();
             aud.PlayOneShot(Bouns, 1.5f);
